@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+    form(action="machine/add", method="post")
+        input(type="text" name="machineID")
+        input(type="text" name="machineName")
+        input(type="text" name="serialNo")
+        input(type="text" name="modelID")
+        input(type="text" name="ip")
+    
+        input(type="text" name="machineStatus")
+        input(type="submit" value="Add machine")
+    
