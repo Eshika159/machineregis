@@ -1,0 +1,103 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+    
+  
+  button(type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#addMachineModal" ) AddMachine
+
+  <!--Add Machine  Modal Start -->
+  div(id="addMachineModal" class="modal" role="dialog")
+    div(class="modal-dialog")
+
+      <!-- Modal content-->
+      div(class="modal-content")
+        div(class="modal-header")
+          h4(class="modal-title") Add Machine
+          button(type="button" class="close" data-dismiss="modal") &times;
+        <!--Modal Body -->
+        div(class="modal-body")
+          div.form-group
+            form(action="", method="post")
+              label(for="machineID") Machine ID
+              input(type="text", name="machineID", required).form-control 
+              
+              
+              label(for='machineName') Machine Name
+              input(type="text" ,name="machineName", required).form-control  
+              
+              
+              label(for='serialNo') SerialNo
+              input(type="text", name="serialNo", required).form-control 
+              
+              
+              label(for='moddelID') ModelID 
+              input(type="text" ,name="modelID", required).form-control  
+              
+              
+              label(for="ip") IP Address
+              input(type="text", name="ip" ,required).form-control  
+              
+              
+              label(for="machineStatus" required) Machine Status
+              input(type="text" ,name="machineStatus" ,required).form-control  
+              
+              
+              button(type="submit" , value="Add machine").btn.btn-primary.mt-2 Add 
+              button(type="reset" , value="Reset").btn.btn-secondary.mt-2.mx-2 Reset 
+        div(class="modal-footer")
+          button(type="button" class="btn btn-default" data-dismiss="modal") Close
+    
+             
+
+
+
+
+
+
+ 
+  
+  if machinelist.length
+    table.table.table-hover.table-striped
+      thead.thead-dark
+        tr
+            th Machine ID 
+            th Machine Name
+            th Serial No.
+            th Model ID 
+            th IP Address
+            th Machine Status
+            th Edit
+            th Delete 
+      tbody      
+        each data in machinelist
+            tr
+                td= data.machineID
+                td= data.machineName
+                td=data.serialNo
+                td=data.modelID
+                td=data.ip
+                td=data.machineStatus
+                td
+                  button(type="button" ).btn.btn-warning Edit
+                td
+                  button(type="button").btn.btn-danger Delete
+  else
+    p No registrations yet :(
+
+      
+    
+  
+     
+
+
+
+
+
+
+
+  //a(href="viewMachines") View Machines
+  //a(href="machine") Delete Machine
+  //a(href="machine") Edit Machine
